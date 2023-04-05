@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<form method="POST" xmlns="http://www.w3.org/1999/html">
+    {% csrf_token %}
+     {{f.as_P}}
+    <button = "submit">confirm</button>
+
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="banner">
+    <div class="row">
+        <div class="col-md-12">
+
+                <div class="banner-text">
+                    <h1>TODO</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+               <form method="POST" class="p-3 shadow">
+                    {% csrf_token %}
+                    <div class="form-group">
+                                  <input type="text" class="form-control" name="task" placeholder="Taskname">
+
+                                        </div>
+                                               <div class="form-group">
+                                                         <input type="text" class="form-control" name="priority" placeholder="Enter your priority">
+                                                       </div>
+                                       <div class="form-group">
+                                           <input type="text" class="form-control" name="date" placeholder="Enter your  date">
+                                       </div>
+
+    <input type="submit" class="btn-btn-success">
+                    </form>
+
+    </div>
+        <div class="col-md-6">
+            <h4>task to be completed</h4>
+              {% for i in task1 %}
+            <div class=" shadow card">
+              <div class="card-body">
+                  <h5 class="card-title">{{i.name}}</h5>
+                  <P><b>{{i.priority}}</b></P>
+                  <P><b>{{i.date}}</b></P>
+<!--                  <a class="btn btn-primary" href="#" role="button">Done</a>-->
+                  <a class="btn btn-danger" href="{% url 'delete' i.id %}" role="button">Done</a>
+                   <a class="btn btn-success" href="{% url 'update' i.id %}" role="button">Update</a>
+
+<!--                  <a class="btn-btn-success" href="#" role="button">Done</a>-->
+<!--                  <a class="btn-btn-danger" href="{% url 'delete' i.id %}" role="button">Delete</a>-->
+<!--                  <a class="btn-btn-danger" href="{% url 'update' i.id %}">Update</a>-->
+
+              </div>
+                    </div>
+            <br>
+            {% endfor %}
+        </div>
+</div>
+
+</div>
+
+{% endblock %}
+
